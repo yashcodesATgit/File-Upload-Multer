@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#f4f6f9;
+            padding:30px;
+        }
+
+        .card{
+            width:420px;
+            background:#ffffff;
+            border-radius:18px;
+            padding:35px;
+            box-shadow:0 12px 30px rgba(0,0,0,.12);
+        }
+
+        h1{
+            text-align:center;
+            color:#1f2937;
+            margin-bottom:10px;
+        }
+
+        p{
+            text-align:center;
+            color:#6b7280;
+            margin-bottom:30px;
+        }
+
+        .upload-box{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            border:2px dashed #cbd5e1;
+            border-radius:12px;
+            padding:40px 20px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .upload-box:hover{
+            background:#f8fafc;
+            border-color:#2563eb;
+        }
+
+        .upload-box input{
+            display:none;
+        }
+
+        .icon{
+            font-size:45px;
+            margin-bottom:15px;
+        }
+
+        #fileName{
+            color:#374151;
+            font-weight:600;
+            text-align:center;
+            word-break:break-word;
+        }
+
+        button{
+            width:100%;
+            margin-top:25px;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            background:#2563eb;
+            color:#fff;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#1d4ed8;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h1>📁 Image Upload</h1>
+
+        <p>Select an image from your device and upload it.</p>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+
+            <label class="upload-box">
+
+                <div class="icon">🖼️</div>
+
+                <span id="fileName">
+                    Click here to choose an image
+                </span>
+
+                <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    accept="image/*"
+                    required
+                >
+
+            </label>
+
+            <button type="submit">
+                Upload Image
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+
+        const input = document.getElementById("image");
+        const fileName = document.getElementById("fileName");
+
+        input.addEventListener("change", () => {
+
+            if(input.files.length > 0){
+                fileName.textContent = input.files[0].name;
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
